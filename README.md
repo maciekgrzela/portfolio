@@ -1,2 +1,2 @@
-# Aplikacja Portfolio
-Osobiste portfolio przedstawiające wykonane projekty
+# Aplikacja Portfolio - API
+Server side dla osobistego portfolio przedstawiającego wykonane projekty
