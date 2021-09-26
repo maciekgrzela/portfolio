@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models
 {
-    public class SocialMediaLink : BaseEntity
+    public class Ability : BaseEntity
     {
         [Key]
         public Guid Id { get; set; }
-        [Required, MaxLength(30)]
-        public string Platform { get; set; }
-        [Required]
-        public string Path { get; set; }
+        [Required, MaxLength(50)]
+        public string Name { get; set; }
+        [Required, Range(0, 100)]
+        public double PercentageValue { get; set; }
         public virtual User User { get; set; }
         public string UserId { get; set; }
     }

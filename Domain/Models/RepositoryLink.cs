@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models
 {
-    public class SocialMediaLink : BaseEntity
+    public class RepositoryLink : BaseEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -11,7 +11,7 @@ namespace Domain.Models
         public string Platform { get; set; }
         [Required]
         public string Path { get; set; }
-        public virtual User User { get; set; }
-        public string UserId { get; set; }
+        public Guid ProjectId { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

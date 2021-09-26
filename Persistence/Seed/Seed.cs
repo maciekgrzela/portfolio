@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Models;
@@ -19,7 +20,13 @@ namespace Persistence.Seed
                     Id = Guid.NewGuid().ToString(),
                     FirstName = "Maciek",
                     LastName = "Grzela",
-                    Email = "maciekgrzela45@gmail.com"
+                    Email = "maciekgrzela45@gmail.com",
+                    SelfDescription = "",
+                    LookingForAJob = true,
+                    Abilities = new List<Ability>(),
+                    Achievements = new List<Achievement>(),
+                    Projects = new List<Project>(),
+                    WorkExperiences = new List<WorkExperience>()
                 };
 
                 await manager.CreateAsync(user, configuration.GetSection("DefaultUsersCredentials").Value);

@@ -9,11 +9,15 @@ namespace Persistence.Context
 {
     public class DataContext : IdentityDbContext<User>
     {
-        public DbSet<Link> Links { get; set; }
-        public DbSet<Repo> Repos { get; set; }
-        public DbSet<TechnologyStackInfo> TechnologyStackInfos { get; set; }
-        public DbSet<TechnologyStackItem> TechnologyStackItems { get; set; }
+        public DbSet<Ability> Abilities { get; set; }
+        public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<ContactFormRequest> ContactFormRequests { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectTag> ProjectTags { get; set; }
+        public DbSet<ProjectImage> ProjectImages { get; set; }
+        public DbSet<RepositoryLink> RepositoryLinks { get; set; }
         public DbSet<SocialMediaLink> SocialMediaLinks { get; set; }
+        public DbSet<WorkExperience> WorkExperiences { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -25,34 +29,19 @@ namespace Persistence.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<ProjectTag>()
+                .HasKey(pt => new {pt.ProjectId, pt.TagId});
             
-            builder.Entity<Repo>()
-                .HasMany(p => p.Links)
-                .WithOne(p => p.Repo)
-                .HasForeignKey(p => p.RepoId);
-
-            builder.Entity<Repo>()
-                .HasMany(p => p.TechnologyStackInfos)
-                .WithOne(p => p.Repo)
-                .HasForeignKey(p => p.RepoId);
-
-            builder.Entity<TechnologyStackItemAndInfo>()
-                .HasKey(ts => new {ts.TechnologyStackInfoId, ts.TechnologyStackItemId});
-
-            builder.Entity<TechnologyStackItemAndInfo>()
-                .HasOne(p => p.TechnologyStackInfo)
-                .WithMany(p => p.TechnologyStackItemAndInfos)
-                .HasForeignKey(p => p.TechnologyStackInfoId);
-
-            builder.Entity<TechnologyStackItemAndInfo>()
-                .HasOne(p => p.TechnologyStackItem)
-                .WithMany(p => p.TechnologyStackItemAndInfos)
-                .HasForeignKey(p => p.TechnologyStackItemId);
-
-            builder.Entity<SocialMediaLink>()
-                .HasOne(p => p.User)
-                .WithMany(p => p.SocialMediaLinks)
-                .HasForeignKey(p => p.UserId);
+            builder.Entity<ProjectTag>()
+                .HasOne(pt => pt.Project)
+                .WithMany(p => p.ProjectTags)
+                .HasForeignKey(pt => pt.ProjectId);  
+            
+            builder.Entity<ProjectTag>()
+                .HasOne(pt => pt.Tag)
+                .WithMany(p => p.ProjectTags)
+                .HasForeignKey(pt => pt.TagId);
         }
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

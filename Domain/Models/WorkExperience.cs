@@ -3,14 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models
 {
-    public class SocialMediaLink : BaseEntity
+    public class WorkExperience : BaseEntity
     {
         [Key]
         public Guid Id { get; set; }
-        [Required, MaxLength(30)]
-        public string Platform { get; set; }
         [Required]
-        public string Path { get; set; }
+        public DateTime DateStart { get; set; }
+        [Required]
+        public DateTime DateEnd { get; set; }
+        [Required, MaxLength(250)]
+        public string Title { get; set; }
         public virtual User User { get; set; }
         public string UserId { get; set; }
     }
