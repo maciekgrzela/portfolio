@@ -22,7 +22,7 @@ namespace API.Extensions
             
             try
             {
-                Seed.SeedDataAsync(context, manager, config);
+                Seed.SeedDataAsync(context, manager, config).Wait();
             }
             catch (Exception e)
             {

@@ -15,8 +15,8 @@ namespace Persistence.Context
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectTag> ProjectTags { get; set; }
         public DbSet<ProjectImage> ProjectImages { get; set; }
-        public DbSet<RepositoryLink> RepositoryLinks { get; set; }
         public DbSet<SocialMediaLink> SocialMediaLinks { get; set; }
+        public DbSet<Tag> Tags { get; set; }
         public DbSet<WorkExperience> WorkExperiences { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }

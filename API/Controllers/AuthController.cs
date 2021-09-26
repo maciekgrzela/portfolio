@@ -28,11 +28,18 @@ namespace API.Controllers
             return HandleResult(registeredUser);
         }
         
-        [Authorize]
-        [HttpGet("my/data")]
-        public async Task<IActionResult> GetMyDataAsync()
+        [HttpGet("introduce")]
+        public async Task<IActionResult> IntroduceAsync()
         {
-            var owner = await Mediator.Send(new GetMyData.Query());
+            var owner = await Mediator.Send(new Introduce.Query());
+            return HandleResult(owner);
+        }
+        
+        [Authorize]
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(Update.Command command)
+        {
+            var owner = await Mediator.Send(command);
             return HandleResult(owner);
         }
         

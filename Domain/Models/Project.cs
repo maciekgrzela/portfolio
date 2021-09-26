@@ -8,6 +8,8 @@ namespace Domain.Models
     {
         [Key]
         public Guid Id { get; set; }
+        [Required]
+        public int Order { get; set; }
         [Required, MaxLength(50)]
         public string Title { get; set; }
         [Required, Range(0, int.MaxValue)]
@@ -19,7 +21,7 @@ namespace Domain.Models
         [Required, MaxLength(5000)]
         public string Description { get; set; }
         [Required]
-        public virtual RepositoryLink RepositoryLink { get; set; }
+        public string RepositoryLink { get; set; }
         [Required]
         public bool IsPrivate { get; set; }
         public virtual List<ProjectImage> ProjectImages { get; set; }

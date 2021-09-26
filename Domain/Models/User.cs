@@ -10,9 +10,9 @@ namespace Domain.Models
         public string FirstName { get; set; }
         [Required, MaxLength(100)]
         public string LastName { get; set; }
-        [Required, MaxLength(100)]
-        public string SelfDescription { get; set; }
         [Required, MaxLength(2000)]
+        public string SelfDescription { get; set; }
+        [Required]
         public bool LookingForAJob { get; set; }
         public virtual List<SocialMediaLink> SocialMediaLinks { get; set; }
         public virtual List<Achievement> Achievements { get; set; }

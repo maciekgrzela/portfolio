@@ -15,11 +15,14 @@ namespace Persistence.Seed
         {
             if (!manager.Users.Any())
             {
+                var usersId = Guid.NewGuid().ToString();
+                
                 var user = new User
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = usersId,
                     FirstName = "Maciek",
                     LastName = "Grzela",
+                    UserName = usersId,
                     Email = "maciekgrzela45@gmail.com",
                     SelfDescription = "",
                     LookingForAJob = true,
@@ -30,6 +33,7 @@ namespace Persistence.Seed
                 };
 
                 await manager.CreateAsync(user, configuration.GetSection("DefaultUsersCredentials").Value);
+                await context.SaveChangesAsync();
             }
         }
     }

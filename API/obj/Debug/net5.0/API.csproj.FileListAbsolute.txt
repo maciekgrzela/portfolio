@@ -80,3 +80,6 @@ C:\Users\HP\Desktop\PROJEKTY\PORTFOLIO\portfolio-api\API\bin\Debug\net5.0\Micros
 C:\Users\HP\Desktop\PROJEKTY\PORTFOLIO\portfolio-api\API\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\HP\Desktop\PROJEKTY\PORTFOLIO\portfolio-api\API\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\HP\Desktop\PROJEKTY\PORTFOLIO\portfolio-api\API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\HP\Desktop\PROJEKTY\PORTFOLIO\portfolio-api\API\bin\Debug\net5.0\CloudinaryDotNet.dll
+C:\Users\HP\Desktop\PROJEKTY\PORTFOLIO\portfolio-api\API\bin\Debug\net5.0\Microsoft.Extensions.WebEncoders.dll
+C:\Users\HP\Desktop\PROJEKTY\PORTFOLIO\portfolio-api\API\bin\Debug\net5.0\Newtonsoft.Json.dll

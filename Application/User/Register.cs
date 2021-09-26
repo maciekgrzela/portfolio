@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -63,6 +64,12 @@ namespace Application.User
                     FirstName = request.FirstName,
                     LastName = request.LastName,
                     Email = request.Email,
+                    Abilities = new List<Ability>(),
+                    Achievements = new List<Achievement>(),
+                    Projects = new List<Project>(),
+                    WorkExperiences = new List<WorkExperience>(),
+                    SelfDescription = "",
+                    LookingForAJob = true
                 };
 
                 var result = await _manager.CreateAsync(user, request.Password);

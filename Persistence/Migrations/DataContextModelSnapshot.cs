@@ -134,6 +134,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RepositoryLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Responsibility")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -191,38 +198,6 @@ namespace Persistence.Migrations
                     b.ToTable("ProjectTags");
                 });
 
-            modelBuilder.Entity("Domain.Models.RepositoryLink", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Path")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Platform")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId")
-                        .IsUnique();
-
-                    b.ToTable("RepositoryLinks");
-                });
-
             modelBuilder.Entity("Domain.Models.SocialMediaLink", b =>
                 {
                     b.Property<Guid>("Id")
@@ -231,6 +206,11 @@ namespace Persistence.Migrations
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("DisplayedName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
@@ -267,7 +247,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Domain.Models.User", b =>
@@ -315,7 +295,6 @@ namespace Persistence.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<bool>("LookingForAJob")
-                        .HasMaxLength(2000)
                         .HasColumnType("bit");
 
                     b.Property<string>("NormalizedEmail")
@@ -340,8 +319,8 @@ namespace Persistence.Migrations
 
                     b.Property<string>("SelfDescription")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -584,17 +563,6 @@ namespace Persistence.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("Domain.Models.RepositoryLink", b =>
-                {
-                    b.HasOne("Domain.Models.Project", "Project")
-                        .WithOne("RepositoryLink")
-                        .HasForeignKey("Domain.Models.RepositoryLink", "ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("Domain.Models.SocialMediaLink", b =>
                 {
                     b.HasOne("Domain.Models.User", "User")
@@ -669,9 +637,6 @@ namespace Persistence.Migrations
                     b.Navigation("ProjectImages");
 
                     b.Navigation("ProjectTags");
-
-                    b.Navigation("RepositoryLink")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Models.Tag", b =>

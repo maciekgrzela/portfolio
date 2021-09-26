@@ -9,6 +9,8 @@ namespace Domain.Models
         public Guid Id { get; set; }
         [Required, MaxLength(30)]
         public string Platform { get; set; }
+        [Required, MaxLength(50)]
+        public string DisplayedName { get; set; }
         [Required]
         public string Path { get; set; }
         public virtual User User { get; set; }
