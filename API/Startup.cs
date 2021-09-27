@@ -39,7 +39,7 @@ namespace API
 
             services.AddCors(opt =>
             {
-                opt.AddDefaultPolicy(policy =>
+                opt.AddPolicy("CorsPolicy", policy =>
                 {
                     policy
                         .AllowAnyHeader()
@@ -113,6 +113,9 @@ namespace API
                     };
                 });
 
+            services.Configure<CloudinaryCredentials>(Configuration.GetSection("Authentication:Cloudinary"));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.AddScoped<IWebTokenGenerator, WebTokenGenerator>();
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddMediatR(typeof(Login.QueryHandler).Assembly);
@@ -129,7 +132,7 @@ namespace API
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors();
+            app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
 
