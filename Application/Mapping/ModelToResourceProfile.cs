@@ -24,7 +24,6 @@ namespace Application.Mapping
             CreateMap<Achievement, AchievementResource>();
             CreateMap<ContactFormRequest, ContactResource>();
             CreateMap<Project, ProjectResource>();
-            CreateMap<Project, ProjectForIntroduceResource>();
             CreateMap<ProjectImage, ImageForProjectResource>();
             CreateMap<ProjectTag, TagForProjectResource>()
                 .ForMember(p => p.Id, opt => opt.MapFrom(p => p.Tag.Id))

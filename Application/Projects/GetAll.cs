@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Abilities.Resources;
@@ -32,9 +33,10 @@ namespace Application.Projects
             public async Task<Response<List<ProjectResource>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var projects = await _context.Projects
-                    .Include(p => p.ProjectImages)
+                    .Include(p => p.ProjectImages.OrderBy(p => p.Path))
                     .Include(p => p.ProjectTags)
                     .Include(p => p.User)
+                    .OrderByDescending(p => p.Order)
                     .ToListAsync(cancellationToken: cancellationToken);
 
                 var resources = _mapper.Map<List<Project>, List<ProjectResource>>(projects);

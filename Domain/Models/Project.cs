@@ -14,7 +14,7 @@ namespace Domain.Models
         public string Title { get; set; }
         [Required, Range(0, int.MaxValue)]
         public int WorkGroup { get; set; }
-        [Required, MaxLength(100)]
+        [Required, MaxLength(500)]
         public string Responsibility { get; set; }
         [Required]
         public virtual List<ProjectTag> ProjectTags { get; set; }

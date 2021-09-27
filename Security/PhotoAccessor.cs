@@ -32,7 +32,8 @@ namespace Security
                 using var stream = file.OpenReadStream();
                 var uploadParams = new ImageUploadParams
                 {
-                    File = new FileDescription(file.FileName, stream)
+                    File = new FileDescription(file.FileName, stream),
+                    Folder = "portfolio"
                 };
                 uploadResult = _cloudinary.Upload(uploadParams);
             }

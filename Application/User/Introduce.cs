@@ -31,10 +31,6 @@ namespace Application.User
                 var currentUser = await _manager.Users
                     .Include(p => p.Abilities.OrderByDescending(p => p.PercentageValue))
                     .Include(p => p.Achievements.OrderByDescending(p => p.Years))
-                    .Include(p => p.Projects)
-                    .ThenInclude(p => p.ProjectImages)
-                    .Include(p => p.Projects)
-                    .ThenInclude(p => p.ProjectTags)
                     .Include(p => p.WorkExperiences.OrderByDescending(p => p.DateStart))
                     .Include(p => p.SocialMediaLinks)
                     .SingleOrDefaultAsync(cancellationToken: cancellationToken);

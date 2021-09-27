@@ -14,7 +14,6 @@ namespace Application.User.Resources
         public List<AchievementForIntroduceResource> Achievements { get; set; }
         public List<WorkExperienceForIntroduceResource> WorkExperiences { get; set; }
         public List<AbilityForIntroduceResource> Abilities { get; set; }
-        public List<ProjectForIntroduceResource> Projects { get; set; }
         public string GithubPath { get; set; }
         public string AzureDevOpsPath { get; set; }
         public string BitbucketPath { get; set; }
@@ -48,37 +47,5 @@ namespace Application.User.Resources
         public Guid Id { get; set; }
         public string Name { get; set; }
         public double PercentageValue { get; set; }
-    }
-
-    public class ProjectForIntroduceResource
-    {
-        public Guid Id { get; set; }
-        public string Title { get; set; }
-        public int WorkGroup { get; set; }
-        public string Responsibility { get; set; }
-        public List<ProjectTagForIntroduceResource> ProjectTags { get; set; }
-        public string Description { get; set; }
-        public RepositoryLinkForIntroduceResource RepositoryLink { get; set; }
-        public bool IsPrivate { get; set; }
-        public List<ProjectImageForIntroduceResource> ProjectImages { get; set; }
-    }
-
-    public class ProjectTagForIntroduceResource
-    {
-        public Guid Id { get; set; }
-        public string Value { get; set; }
-    }
-
-    public class ProjectImageForIntroduceResource
-    {
-        public Guid Id { get; set; }
-        public string Path { get; set; }
-    }
-
-    public class RepositoryLinkForIntroduceResource
-    {
-        public Guid Id { get; set; }
-        public string Platform { get; set; }
-        public string Path { get; set; }
     }
 }

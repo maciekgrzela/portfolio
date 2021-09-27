@@ -23,6 +23,7 @@ namespace API.Controllers
             return HandleResult(contact);
         }
         
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(Create.Command command)
         {
