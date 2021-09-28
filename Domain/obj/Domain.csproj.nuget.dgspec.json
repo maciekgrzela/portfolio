@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\HP\\Desktop\\PROJEKTY\\PORTFOLIO\\portfolio-api\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
