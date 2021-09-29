@@ -28,14 +28,31 @@ namespace API
 
         public IConfiguration Configuration { get; }
 
+        public void ConfigureProductionServices(IServiceCollection services)
+        {
+            services.AddDbContext<DataContext>(opt =>
+            {
+                opt.UseMySql(Configuration.GetConnectionString("DefaultProdConnection"),
+                    ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultProdConnection")));
+            });
+            
+            ConfigureServices(services);
+        }
+        
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            services.AddDbContext<DataContext>(opt =>
+            {
+                opt.UseMySql(Configuration.GetConnectionString("DefaultDevConnection"),
+                    ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultDevConnection")));
+            });
+            
+            ConfigureServices(services);
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
-            services.AddDbContext<DataContext>(opt =>
-            {
-                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection")));
-            });
 
             services.AddCors(opt =>
             {
